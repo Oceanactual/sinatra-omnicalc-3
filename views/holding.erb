@@ -1,0 +1,25 @@
+<% @input_array.each_with_index do |chat_print, index|%>
+  <div>
+    <p>User</p>
+    <p><%=chat_print.to_s%></p>
+    <p>Assistant</p>
+    <p><%=@response_array.at(index).to_s%>
+  </div>
+<%end%>
+
+
+<%if @temp_round < @round%>
+  <p>User</p>
+  <p><%=cookies.fetch("user#{@round}")%>
+  <p>Assistant</p>
+  <p><%=cookies.fetch("response#{@round}")%>
+  <%@temp_round = @temp_round+1%>
+<%else%>
+<%end%>
+
+<%@round.times do |convo|%>
+  <p>User</p>
+  <p><%=cookies.fetch("user#{convo}")%>
+  <p>Assistant</p>
+  <p><%=cookies.fetch("response#{convo}")%>
+<%end%>
